@@ -6,7 +6,13 @@ import java.util.Scanner;
 public class assignment1 {
 	static int Day = 0; static int Month = 0; static int Year = 0;
 	static boolean isLeapYear = false;
+	
+	static int minYear = 1582;
+	static int maxYear = 2099;
+	
 	static Scanner scan = new Scanner(System.in);
+	
+	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		System.out.println("#####################################");
@@ -16,7 +22,7 @@ public class assignment1 {
 		Day = scan.nextInt();
 		System.out.println("Please enter a valid Month (1-12): ");
 		Month = scan.nextInt();
-		System.out.println("Please enter a valid Year (1582-1999): ");
+		System.out.printf("Please enter a valid Year (1582-%d): ", maxYear);
 		Year = scan.nextInt();
 		
 		boolean validYear = getYear();
@@ -25,7 +31,8 @@ public class assignment1 {
 			if (validMonth == true) {
 				boolean validDay = getDay();
 				if (validDay == true) {
-					System.out.println("WOOT!");
+					//System.out.println("WOOT!");
+					dateFormatter();
 				}
 			}
 			
@@ -44,22 +51,19 @@ public class assignment1 {
 			
 		  System.out.print("Please enter a valid Day (1-31): ");
 		}
-		Day = scan.nextInt();
+
 		boolean isDayValid = false;
 		
-		while (isDayValid == false) {
-		  boolean response = validateDay(Day, Month);
-		  if ( response == true ) {
-			  isDayValid = true;
-		  }
-		  else {
-			  System.out.print("[" + Day + "]" + " is not a valid day value: ");
-			  Day = scan.nextInt();
-			  validateDay(Day, Month);
-		  }
+		boolean response = validateDay(Day, Month);
+	    if ( response == true ) {
+		  isDayValid = true;
+		  return true;
+	    }
+	    else {
+		  System.out.print("[" + Day + "]" + " is not a valid day value: ");
+		  return false;
+	    }
 			  
-		}
-		return true;
 	}
 	public static boolean validateDay(int Day, int Month) {
 		//System.out.println(Day + "Function Call success");
@@ -101,22 +105,18 @@ public class assignment1 {
 	}
 	
 	public static boolean getMonth() {
-		System.out.println("Please enter a valid Month (1-12): ");
-		Month = scan.nextInt();
+
 		boolean isMonthValid = false;
-		while ( isMonthValid == false ) {
-			boolean response = validateMonth(Month);
-			if (response == true ) {
-				isMonthValid = true;
-			}
-			else {
-				System.out.print("[" + Month + "]" + " is not valid month value");
-				Month = scan.nextInt();
-				validateMonth(Month);
-			}
-		}
 		
-		return true;
+		boolean response = validateMonth(Month);
+		if (response == true ) {
+			isMonthValid = true;
+			return true;
+		}
+		else {
+			System.out.print("[" + Month + "]" + " is not valid month value");
+			return false;
+		}
 	}
 	
 	public static boolean validateMonth(int Month) {
@@ -132,24 +132,21 @@ public class assignment1 {
 		
 		boolean isYearValid = false;
 		
-		while ( isYearValid == false ) {
-			boolean response = validateYear(Year);
-			if ( response == true ) {
-				isYearValid = true;
-			}
-			else {
-				System.out.println("[" + "Year" + "]" + " is not a valid value");
-				Year = scan.nextInt();
-				validateYear(Year);
-			}
+		boolean response = validateYear(Year);
+		
+		if ( response == true ) {
+			isYearValid = true;
+			return true;
 		}
-		return true;
+		else {
+			System.out.println("[" + "Year" + "]" + " is not a valid value");
+			return false;
+
+		}
 		
 	}
 
 	public static boolean validateYear(int Year) {
-		int minYear = 1582;
-		int maxYear = 2099;
 		
 		// Check if Year is in the valid range
 		if ( Year >= minYear && Year <= maxYear ) {
@@ -169,6 +166,50 @@ public class assignment1 {
 		} 
 	   
 	} // Method ends
+	
+	public static void dateFormatter() {
+		
+		switch(Month) {
+		  case 1:
+			  System.out.printf("January %d, %d", Day, Year);
+			  break;
+		  case 2:
+			  System.out.printf("Feburary %d, %d", Day, Year);
+			  break;
+		  case 3:
+			  System.out.printf("March %d, %d", Day, Year);
+			  break;
+		  case 4:
+			  System.out.printf("April %d, %d", Day, Year);
+			  break;
+		  case 5:
+			  System.out.printf("May %d, %d", Day, Year);
+			  break;
+		  case 6:
+			  System.out.printf("July %d, %d", Day, Year);
+			  break;
+		  case 7:
+			  System.out.printf("January %d, %d", Day, Year);
+			  break;
+		  case 8:
+			  System.out.printf("January %d, %d", Day, Year);
+			  break;
+		  case 9:
+			  System.out.printf("January %d, %d", Day, Year);
+			  break;
+		  case 10:
+			  System.out.printf("January %d, %d", Day, Year);
+			  break;
+		  case 11:
+			  System.out.printf("January %d, %d", Day, Year);
+			  break;
+		  case 12:
+			  System.out.printf("January %d, %d", Day, Year);
+			  break;
+		  default:
+			  System.out.println("Invalid Response Somewhere");
+		}
+	}
 	
 } // Class Ends
 
