@@ -12,14 +12,27 @@ public class assignment1 {
 		System.out.println("#####################################");
 		System.out.println("### Welcome to RRC DATE FORMATTER ###");
 		System.out.println("#####################################");
-		getYear();
-		getMonth();
-		getDay();
+		System.out.print("Please enter a valid Day (1-31): ");
+		Day = scan.nextInt();
+		System.out.println("Please enter a valid Month (1-12): ");
+		Month = scan.nextInt();
+		System.out.println("Please enter a valid Year (1582-1999): ");
+		Year = scan.nextInt();
 		
+		boolean validYear = getYear();
+		if (validYear == true ) {
+			boolean validMonth = getMonth();
+			if (validMonth == true) {
+				boolean validDay = getDay();
+				if (validDay == true) {
+					System.out.println("WOOT!");
+				}
+			}
+			
+		}
 		
-
 	}
-	public static void getDay() {
+	public static boolean getDay() {
 		
 		if ( Month == 4 || Month == 6 || Month == 9 || Month == 11 ) {
 			System.out.print("Please enter a valid Day (1-30): ");
@@ -46,6 +59,7 @@ public class assignment1 {
 		  }
 			  
 		}
+		return true;
 	}
 	public static boolean validateDay(int Day, int Month) {
 		//System.out.println(Day + "Function Call success");
@@ -86,7 +100,7 @@ public class assignment1 {
 		
 	}
 	
-	public static void getMonth() {
+	public static boolean getMonth() {
 		System.out.println("Please enter a valid Month (1-12): ");
 		Month = scan.nextInt();
 		boolean isMonthValid = false;
@@ -101,6 +115,8 @@ public class assignment1 {
 				validateMonth(Month);
 			}
 		}
+		
+		return true;
 	}
 	
 	public static boolean validateMonth(int Month) {
@@ -112,10 +128,10 @@ public class assignment1 {
 		}
 	}
 	
-	public static void getYear() {
-		System.out.println("Please enter a valid Year (1582-2099): ");
-		Year = scan.nextInt();
+	public static boolean getYear() {
+		
 		boolean isYearValid = false;
+		
 		while ( isYearValid == false ) {
 			boolean response = validateYear(Year);
 			if ( response == true ) {
@@ -127,6 +143,7 @@ public class assignment1 {
 				validateYear(Year);
 			}
 		}
+		return true;
 		
 	}
 
