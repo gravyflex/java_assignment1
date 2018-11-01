@@ -66,7 +66,7 @@ public class assignment1 {
 			  
 	}
 	public static boolean validateDay(int Day, int Month) {
-		//System.out.println(Day + "Function Call success");
+
 		if ( Month == 4 || Month == 6 || Month == 9 || Month == 11 ) { // Validate Days when the month Apr, Jun, Sep, Nov
 			if ( Day >= 1 && Day <= 30 ) {
 				return true;
@@ -88,6 +88,10 @@ public class assignment1 {
 			if ( Day >= 1 && Day <= lastDay ) {
 				return true;
 			}
+			else if (Day == 29 && isLeapYear == false ) {
+				System.out.printf("[%d] February only has 29 days on a leap year\n", Year);
+				return false;
+			}
 			else {
 				return false;
 			}
@@ -99,8 +103,7 @@ public class assignment1 {
 			else {
 				return false;	
 			}	
-		}
-		
+		}	
 		
 	}
 	
